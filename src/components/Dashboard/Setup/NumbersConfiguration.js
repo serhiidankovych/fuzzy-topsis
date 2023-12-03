@@ -312,32 +312,6 @@ export default function NumberConfiguration({
             disabled={!isDatasetNotUsed}
           />
         </Box>
-        <Box
-          component="span"
-          sx={{
-            p: "8px",
-            border: "1px solid #51454f",
-            borderRadius: "8px",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Typography id="experts-slider" gutterBottom>
-            Weight degree(υ)
-          </Typography>
-          <Slider
-            aria-labelledby="experts-slider"
-            value={weightParameter}
-            valueLabelDisplay="auto"
-            step={0.1}
-            marks
-            min={0}
-            max={1}
-            onChange={(e) => setWeightParameter(e.target.value)}
-            color="green"
-            // disabled={!isDatasetNotUsed}
-          />
-        </Box>
 
         <Button
           variant="contained"

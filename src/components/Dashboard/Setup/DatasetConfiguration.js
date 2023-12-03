@@ -14,7 +14,6 @@ import { setExpertsEstimationConfiguration } from "../../../store/actions/expert
 import { setOptimizationConfiguration } from "../../../store/actions/optimizationConfigurationActions";
 import { useDispatch } from "react-redux";
 import { dataset1 } from "../../../templates/dataset1";
-import { dataset2 } from "../../../templates/dataset2";
 
 export default function DatasetConfiguration({ setIsDatasetNotUsed }) {
   const dispatch = useDispatch();
@@ -74,11 +73,7 @@ export default function DatasetConfiguration({ setIsDatasetNotUsed }) {
         >
           Dataset #1
         </Button>
-        <Button
-          variant="contained"
-          color="green"
-          onClick={() => handleSetDataset(dataset2)}
-        >
+        <Button variant="contained" color="green" disabled>
           Dataset #2
         </Button>
       </Stack>

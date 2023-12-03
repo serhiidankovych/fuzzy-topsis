@@ -67,8 +67,9 @@ export default function ThemeContainer({ dashboard }) {
       MuiPaper: {
         styleOverrides: {
           root: {
-            background: " rgba(18,18,18,0.8)",
+            background: " rgba(18,18,18,0.3)",
             boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+            backdropFilter: "blur(5px)",
           },
         },
       },

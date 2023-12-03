@@ -1,203 +1,198 @@
-export const numberOfAlternatives = 5;
-export const numberOfCriteria = 7;
-export const numberOfLinguisticTermsForAlternatives = 6;
+export const numberOfAlternatives = 3;
+export const numberOfCriteria = 5;
+export const numberOfLinguisticTermsForAlternatives = 5;
 export const numberOfLinguisticTermsForCriteria = 5;
-export const numberOfExperts = 3;
-const weightParameter = 0.6;
+export const numberOfExperts = 4;
+const weightParameter = 0.5;
 export const names = {
-  alternativeNames: ["SnoopDrone", "McFly", "Snitch", "Lightdrone", "Phantom"],
+  alternativeNames: ["Alternative1", "Alternative2", "Alternative3"],
   criteriaNames: [
-    "Stability",
-    "Payload ",
-    "Battery",
-    "Security",
-    "Obstacle",
-    "Range",
-    "Camera",
+    "Criteria1",
+    "Criteria2",
+    "Criteria3",
+    "Criteria4",
+    "Criteria5",
   ],
-  linguisticTermsForAlternativesNames: ["VP", "P", "F", "G", "VG", "E"],
+  linguisticTermsForAlternativesNames: ["VP", "P", "F", "G", "VG"],
   linguisticTermsForCriteriaNames: ["VL", "L", "M", "H", "VH"],
-  expertNames: ["Thomas Saaty", "Serafim Opricovic", "Gladys West"],
+  expertNames: ["Expert1", "Expert2", "Expert3", "Expert4"],
 };
 
 export const optimization = {
-  c1: "Min",
+  c1: "Max",
   c2: "Max",
   c3: "Max",
   c4: "Max",
   c5: "Max",
-  c6: "Min",
-  c7: "Min",
-  c8: "Max",
 };
 
 export const criteriaLinguisticTerms = [
   {
     linguisticTermId: 0,
-    confines: [0, 0, 0.3],
+    confines: [1, 1, 3],
     type: "lt-criteria",
     triangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0,
+        x: 1,
         y: 1,
       },
       {
-        x: 0.3,
+        x: 3,
         y: 0,
       },
     ],
-    normalizedConfines: [0, 0, 0.3],
+    normalizedConfines: [1, 1, 3],
     normalizedTriangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0,
+        x: 1,
         y: 1,
       },
       {
-        x: 0.3,
+        x: 3,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 1,
-    confines: [0, 0.3, 0.5],
+    confines: [1, 3, 5],
     type: "lt-criteria",
     triangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0.3,
+        x: 3,
         y: 1,
       },
       {
-        x: 0.5,
+        x: 5,
         y: 0,
       },
     ],
-    normalizedConfines: [0, 0.3, 0.5],
+    normalizedConfines: [1, 3, 5],
     normalizedTriangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0.3,
+        x: 3,
         y: 1,
       },
       {
-        x: 0.5,
+        x: 5,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 2,
-    confines: [0.3, 0.5, 0.8],
+    confines: [3, 5, 7],
     type: "lt-criteria",
     triangularChart: [
       {
-        x: 0.3,
+        x: 3,
         y: 0,
       },
       {
-        x: 0.5,
+        x: 5,
         y: 1,
       },
       {
-        x: 0.8,
+        x: 7,
         y: 0,
       },
     ],
-    normalizedConfines: [0.3, 0.5, 0.8],
+    normalizedConfines: [3, 5, 7],
     normalizedTriangularChart: [
       {
-        x: 0.3,
+        x: 3,
         y: 0,
       },
       {
-        x: 0.5,
+        x: 5,
         y: 1,
       },
       {
-        x: 0.8,
+        x: 7,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 3,
-    confines: [0.5, 0.8, 1],
+    confines: [5, 7, 9],
     type: "lt-criteria",
     triangularChart: [
       {
-        x: 0.5,
+        x: 5,
         y: 0,
       },
       {
-        x: 0.8,
+        x: 7,
         y: 1,
       },
       {
-        x: 1,
+        x: 9,
         y: 0,
       },
     ],
-    normalizedConfines: [0.5, 0.8, 1],
+    normalizedConfines: [5, 7, 9],
     normalizedTriangularChart: [
       {
-        x: 0.5,
+        x: 5,
         y: 0,
       },
       {
-        x: 0.8,
+        x: 7,
         y: 1,
       },
       {
-        x: 1,
+        x: 9,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 4,
-    confines: [0.8, 1, 1],
+    confines: [7, 9, 9],
     type: "lt-criteria",
     triangularChart: [
       {
-        x: 0.8,
+        x: 7,
         y: 0,
       },
       {
-        x: 1,
+        x: 9,
         y: 1,
       },
       {
-        x: 1,
+        x: 9,
         y: 0,
       },
     ],
-    normalizedConfines: [0.8, 1, 1],
+    normalizedConfines: [7, 9, 9],
     normalizedTriangularChart: [
       {
-        x: 0.8,
+        x: 7,
         y: 0,
       },
       {
-        x: 1,
+        x: 9,
         y: 1,
       },
       {
-        x: 1,
+        x: 9,
         y: 0,
       },
     ],
@@ -207,204 +202,170 @@ export const criteriaLinguisticTerms = [
 export const alternativesLinguisticTerms = [
   {
     linguisticTermId: 0,
-    confines: [0, 0, 0.2],
+    confines: [1, 1, 3],
     type: "lt-alternative",
     triangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0,
+        x: 1,
         y: 1,
       },
       {
-        x: 0.2,
+        x: 3,
         y: 0,
       },
     ],
-    normalizedConfines: [0, 0, 0.2],
+    normalizedConfines: [1, 1, 3],
     normalizedTriangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0,
+        x: 1,
         y: 1,
       },
       {
-        x: 0.2,
+        x: 3,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 1,
-    confines: [0, 0.2, 0.4],
+    confines: [1, 3, 5],
     type: "lt-alternative",
     triangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0.2,
+        x: 3,
         y: 1,
       },
       {
-        x: 0.4,
+        x: 5,
         y: 0,
       },
     ],
-    normalizedConfines: [0, 0.2, 0.4],
+    normalizedConfines: [1, 3, 5],
     normalizedTriangularChart: [
       {
-        x: 0,
+        x: 1,
         y: 0,
       },
       {
-        x: 0.2,
+        x: 3,
         y: 1,
       },
       {
-        x: 0.4,
+        x: 5,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 2,
-    confines: [0.2, 0.4, 0.6],
+    confines: [3, 5, 7],
     type: "lt-alternative",
     triangularChart: [
       {
-        x: 0.2,
+        x: 3,
         y: 0,
       },
       {
-        x: 0.4,
+        x: 5,
         y: 1,
       },
       {
-        x: 0.6,
+        x: 7,
         y: 0,
       },
     ],
-    normalizedConfines: [0.2, 0.4, 0.6],
+    normalizedConfines: [3, 5, 7],
     normalizedTriangularChart: [
       {
-        x: 0.2,
+        x: 3,
         y: 0,
       },
       {
-        x: 0.4,
+        x: 5,
         y: 1,
       },
       {
-        x: 0.6,
+        x: 7,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 3,
-    confines: [0.4, 0.6, 0.8],
+    confines: [5, 7, 9],
     type: "lt-alternative",
     triangularChart: [
       {
-        x: 0.4,
+        x: 5,
         y: 0,
       },
       {
-        x: 0.6,
+        x: 7,
         y: 1,
       },
       {
-        x: 0.8,
+        x: 9,
         y: 0,
       },
     ],
-    normalizedConfines: [0.4, 0.6, 0.8],
+    normalizedConfines: [5, 7, 9],
     normalizedTriangularChart: [
       {
-        x: 0.4,
+        x: 5,
         y: 0,
       },
       {
-        x: 0.6,
+        x: 7,
         y: 1,
       },
       {
-        x: 0.8,
+        x: 9,
         y: 0,
       },
     ],
   },
   {
     linguisticTermId: 4,
-    confines: [0.6, 0.8, 1],
+    confines: [7, 9, 9],
     type: "lt-alternative",
     triangularChart: [
       {
-        x: 0.6,
+        x: 7,
         y: 0,
       },
       {
-        x: 0.8,
+        x: 9,
         y: 1,
       },
       {
-        x: 1,
+        x: 9,
         y: 0,
       },
     ],
-    normalizedConfines: [0.6, 0.8, 1],
+    normalizedConfines: [7, 9, 9],
     normalizedTriangularChart: [
       {
-        x: 0.6,
+        x: 7,
         y: 0,
       },
       {
-        x: 0.8,
+        x: 9,
         y: 1,
       },
       {
-        x: 1,
-        y: 0,
-      },
-    ],
-  },
-  {
-    linguisticTermId: 5,
-    confines: [0.8, 1, 1],
-    type: "lt-alternative",
-    triangularChart: [
-      {
-        x: 0.8,
-        y: 0,
-      },
-      {
-        x: 1,
-        y: 1,
-      },
-      {
-        x: 1,
-        y: 0,
-      },
-    ],
-    normalizedConfines: [0.8, 1, 1],
-    normalizedTriangularChart: [
-      {
-        x: 0.8,
-        y: 0,
-      },
-      {
-        x: 1,
-        y: 1,
-      },
-      {
-        x: 1,
+        x: 9,
         y: 0,
       },
     ],
@@ -413,17 +374,17 @@ export const alternativesLinguisticTerms = [
 
 export const criteriaEstimations = {
   "e1-c1": {
-    linguisticTermId: 1,
+    linguisticTermId: 3,
     criteria: 1,
     expertId: 1,
   },
   "e1-c2": {
-    linguisticTermId: 0,
+    linguisticTermId: 2,
     criteria: 2,
     expertId: 1,
   },
   "e1-c3": {
-    linguisticTermId: 0,
+    linguisticTermId: 1,
     criteria: 3,
     expertId: 1,
   },
@@ -433,22 +394,12 @@ export const criteriaEstimations = {
     expertId: 1,
   },
   "e1-c5": {
-    linguisticTermId: 2,
+    linguisticTermId: 4,
     criteria: 5,
     expertId: 1,
   },
-  "e1-c6": {
-    linguisticTermId: 4,
-    criteria: 6,
-    expertId: 1,
-  },
-  "e1-c7": {
-    linguisticTermId: 3,
-    criteria: 7,
-    expertId: 1,
-  },
   "e2-c1": {
-    linguisticTermId: 1,
+    linguisticTermId: 2,
     criteria: 1,
     expertId: 2,
   },
@@ -458,12 +409,12 @@ export const criteriaEstimations = {
     expertId: 2,
   },
   "e2-c3": {
-    linguisticTermId: 2,
+    linguisticTermId: 3,
     criteria: 3,
     expertId: 2,
   },
   "e2-c4": {
-    linguisticTermId: 0,
+    linguisticTermId: 4,
     criteria: 4,
     expertId: 2,
   },
@@ -472,50 +423,55 @@ export const criteriaEstimations = {
     criteria: 5,
     expertId: 2,
   },
-  "e2-c6": {
-    linguisticTermId: 2,
-    criteria: 6,
-    expertId: 2,
-  },
-  "e2-c7": {
-    linguisticTermId: 4,
-    criteria: 7,
-    expertId: 2,
-  },
   "e3-c1": {
-    linguisticTermId: 4,
+    linguisticTermId: 1,
     criteria: 1,
     expertId: 3,
   },
   "e3-c2": {
-    linguisticTermId: 2,
+    linguisticTermId: 3,
     criteria: 2,
     expertId: 3,
   },
   "e3-c3": {
-    linguisticTermId: 1,
+    linguisticTermId: 2,
     criteria: 3,
     expertId: 3,
   },
   "e3-c4": {
-    linguisticTermId: 0,
+    linguisticTermId: 2,
     criteria: 4,
     expertId: 3,
   },
   "e3-c5": {
-    linguisticTermId: 1,
+    linguisticTermId: 3,
     criteria: 5,
     expertId: 3,
   },
-  "e3-c6": {
+  "e4-c1": {
     linguisticTermId: 4,
-    criteria: 6,
-    expertId: 3,
+    criteria: 1,
+    expertId: 4,
   },
-  "e3-c7": {
+  "e4-c2": {
+    linguisticTermId: 2,
+    criteria: 2,
+    expertId: 4,
+  },
+  "e4-c3": {
     linguisticTermId: 3,
-    criteria: 7,
-    expertId: 3,
+    criteria: 3,
+    expertId: 4,
+  },
+  "e4-c4": {
+    linguisticTermId: 0,
+    criteria: 4,
+    expertId: 4,
+  },
+  "e4-c5": {
+    linguisticTermId: 2,
+    criteria: 5,
+    expertId: 4,
   },
 };
 
@@ -527,217 +483,97 @@ export const expertsEstimations = {
     expertId: 1,
   },
   "e1-a1-c2": {
-    linguisticTermId: 3,
+    linguisticTermId: 1,
     criteria: 2,
     alternative: 1,
     expertId: 1,
   },
   "e1-a1-c3": {
-    linguisticTermId: 4,
+    linguisticTermId: 2,
     criteria: 3,
     alternative: 1,
     expertId: 1,
   },
   "e1-a1-c4": {
-    linguisticTermId: 2,
+    linguisticTermId: 3,
     criteria: 4,
     alternative: 1,
     expertId: 1,
   },
   "e1-a1-c5": {
-    linguisticTermId: 2,
+    linguisticTermId: 3,
     criteria: 5,
     alternative: 1,
     expertId: 1,
   },
-  "e1-a1-c6": {
-    linguisticTermId: 3,
-    criteria: 6,
-    alternative: 1,
-    expertId: 1,
-  },
-  "e1-a1-c7": {
-    linguisticTermId: 4,
-    criteria: 7,
-    alternative: 1,
-    expertId: 1,
-  },
   "e1-a2-c1": {
-    linguisticTermId: 4,
+    linguisticTermId: 1,
     criteria: 1,
     alternative: 2,
     expertId: 1,
   },
   "e1-a2-c2": {
-    linguisticTermId: 4,
+    linguisticTermId: 3,
     criteria: 2,
     alternative: 2,
     expertId: 1,
   },
   "e1-a2-c3": {
-    linguisticTermId: 3,
+    linguisticTermId: 2,
     criteria: 3,
     alternative: 2,
     expertId: 1,
   },
   "e1-a2-c4": {
-    linguisticTermId: 3,
+    linguisticTermId: 4,
     criteria: 4,
     alternative: 2,
     expertId: 1,
   },
   "e1-a2-c5": {
-    linguisticTermId: 1,
+    linguisticTermId: 0,
     criteria: 5,
     alternative: 2,
     expertId: 1,
   },
-  "e1-a2-c6": {
-    linguisticTermId: 4,
-    criteria: 6,
-    alternative: 2,
-    expertId: 1,
-  },
-  "e1-a2-c7": {
-    linguisticTermId: 3,
-    criteria: 7,
-    alternative: 2,
-    expertId: 1,
-  },
   "e1-a3-c1": {
-    linguisticTermId: 2,
+    linguisticTermId: 3,
     criteria: 1,
     alternative: 3,
     expertId: 1,
   },
   "e1-a3-c2": {
-    linguisticTermId: 3,
+    linguisticTermId: 1,
     criteria: 2,
     alternative: 3,
     expertId: 1,
   },
   "e1-a3-c3": {
-    linguisticTermId: 3,
+    linguisticTermId: 4,
     criteria: 3,
     alternative: 3,
     expertId: 1,
   },
   "e1-a3-c4": {
-    linguisticTermId: 4,
+    linguisticTermId: 2,
     criteria: 4,
     alternative: 3,
     expertId: 1,
   },
   "e1-a3-c5": {
-    linguisticTermId: 4,
-    criteria: 5,
-    alternative: 3,
-    expertId: 1,
-  },
-  "e1-a3-c6": {
-    linguisticTermId: 3,
-    criteria: 6,
-    alternative: 3,
-    expertId: 1,
-  },
-  "e1-a3-c7": {
-    linguisticTermId: 2,
-    criteria: 7,
-    alternative: 3,
-    expertId: 1,
-  },
-  "e1-a4-c1": {
-    linguisticTermId: 3,
-    criteria: 1,
-    alternative: 4,
-    expertId: 1,
-  },
-  "e1-a4-c2": {
-    linguisticTermId: 5,
-    criteria: 2,
-    alternative: 4,
-    expertId: 1,
-  },
-  "e1-a4-c3": {
-    linguisticTermId: 3,
-    criteria: 3,
-    alternative: 4,
-    expertId: 1,
-  },
-  "e1-a4-c4": {
-    linguisticTermId: 3,
-    criteria: 4,
-    alternative: 4,
-    expertId: 1,
-  },
-  "e1-a4-c5": {
     linguisticTermId: 2,
     criteria: 5,
-    alternative: 4,
-    expertId: 1,
-  },
-  "e1-a4-c6": {
-    linguisticTermId: 5,
-    criteria: 6,
-    alternative: 4,
-    expertId: 1,
-  },
-  "e1-a4-c7": {
-    linguisticTermId: 3,
-    criteria: 7,
-    alternative: 4,
-    expertId: 1,
-  },
-  "e1-a5-c1": {
-    linguisticTermId: 2,
-    criteria: 1,
-    alternative: 5,
-    expertId: 1,
-  },
-  "e1-a5-c2": {
-    linguisticTermId: 3,
-    criteria: 2,
-    alternative: 5,
-    expertId: 1,
-  },
-  "e1-a5-c3": {
-    linguisticTermId: 4,
-    criteria: 3,
-    alternative: 5,
-    expertId: 1,
-  },
-  "e1-a5-c4": {
-    linguisticTermId: 3,
-    criteria: 4,
-    alternative: 5,
-    expertId: 1,
-  },
-  "e1-a5-c5": {
-    linguisticTermId: 3,
-    criteria: 5,
-    alternative: 5,
-    expertId: 1,
-  },
-  "e1-a5-c6": {
-    linguisticTermId: 3,
-    criteria: 6,
-    alternative: 5,
-    expertId: 1,
-  },
-  "e1-a5-c7": {
-    linguisticTermId: 2,
-    criteria: 7,
-    alternative: 5,
+    alternative: 3,
     expertId: 1,
   },
   "e2-a1-c1": {
-    linguisticTermId: 3,
+    linguisticTermId: 2,
     criteria: 1,
     alternative: 1,
     expertId: 2,
   },
   "e2-a1-c2": {
-    linguisticTermId: 3,
+    linguisticTermId: 1,
     criteria: 2,
     alternative: 1,
     expertId: 2,
@@ -749,26 +585,14 @@ export const expertsEstimations = {
     expertId: 2,
   },
   "e2-a1-c4": {
-    linguisticTermId: 1,
+    linguisticTermId: 4,
     criteria: 4,
     alternative: 1,
     expertId: 2,
   },
   "e2-a1-c5": {
-    linguisticTermId: 3,
-    criteria: 5,
-    alternative: 1,
-    expertId: 2,
-  },
-  "e2-a1-c6": {
     linguisticTermId: 2,
-    criteria: 6,
-    alternative: 1,
-    expertId: 2,
-  },
-  "e2-a1-c7": {
-    linguisticTermId: 3,
-    criteria: 7,
+    criteria: 5,
     alternative: 1,
     expertId: 2,
   },
@@ -785,7 +609,7 @@ export const expertsEstimations = {
     expertId: 2,
   },
   "e2-a2-c3": {
-    linguisticTermId: 1,
+    linguisticTermId: 4,
     criteria: 3,
     alternative: 2,
     expertId: 2,
@@ -797,20 +621,8 @@ export const expertsEstimations = {
     expertId: 2,
   },
   "e2-a2-c5": {
-    linguisticTermId: 0,
+    linguisticTermId: 3,
     criteria: 5,
-    alternative: 2,
-    expertId: 2,
-  },
-  "e2-a2-c6": {
-    linguisticTermId: 2,
-    criteria: 6,
-    alternative: 2,
-    expertId: 2,
-  },
-  "e2-a2-c7": {
-    linguisticTermId: 1,
-    criteria: 7,
     alternative: 2,
     expertId: 2,
   },
@@ -821,7 +633,7 @@ export const expertsEstimations = {
     expertId: 2,
   },
   "e2-a3-c2": {
-    linguisticTermId: 4,
+    linguisticTermId: 3,
     criteria: 2,
     alternative: 3,
     expertId: 2,
@@ -839,127 +651,31 @@ export const expertsEstimations = {
     expertId: 2,
   },
   "e2-a3-c5": {
-    linguisticTermId: 2,
+    linguisticTermId: 0,
     criteria: 5,
     alternative: 3,
-    expertId: 2,
-  },
-  "e2-a3-c6": {
-    linguisticTermId: 3,
-    criteria: 6,
-    alternative: 3,
-    expertId: 2,
-  },
-  "e2-a3-c7": {
-    linguisticTermId: 2,
-    criteria: 7,
-    alternative: 3,
-    expertId: 2,
-  },
-  "e2-a4-c1": {
-    linguisticTermId: 2,
-    criteria: 1,
-    alternative: 4,
-    expertId: 2,
-  },
-  "e2-a4-c2": {
-    linguisticTermId: 3,
-    criteria: 2,
-    alternative: 4,
-    expertId: 2,
-  },
-  "e2-a4-c3": {
-    linguisticTermId: 3,
-    criteria: 3,
-    alternative: 4,
-    expertId: 2,
-  },
-  "e2-a4-c4": {
-    linguisticTermId: 4,
-    criteria: 4,
-    alternative: 4,
-    expertId: 2,
-  },
-  "e2-a4-c5": {
-    linguisticTermId: 3,
-    criteria: 5,
-    alternative: 4,
-    expertId: 2,
-  },
-  "e2-a4-c6": {
-    linguisticTermId: 4,
-    criteria: 6,
-    alternative: 4,
-    expertId: 2,
-  },
-  "e2-a4-c7": {
-    linguisticTermId: 4,
-    criteria: 7,
-    alternative: 4,
-    expertId: 2,
-  },
-  "e2-a5-c1": {
-    linguisticTermId: 4,
-    criteria: 1,
-    alternative: 5,
-    expertId: 2,
-  },
-  "e2-a5-c2": {
-    linguisticTermId: 4,
-    criteria: 2,
-    alternative: 5,
-    expertId: 2,
-  },
-  "e2-a5-c3": {
-    linguisticTermId: 5,
-    criteria: 3,
-    alternative: 5,
-    expertId: 2,
-  },
-  "e2-a5-c4": {
-    linguisticTermId: 5,
-    criteria: 4,
-    alternative: 5,
-    expertId: 2,
-  },
-  "e2-a5-c5": {
-    linguisticTermId: 4,
-    criteria: 5,
-    alternative: 5,
-    expertId: 2,
-  },
-  "e2-a5-c6": {
-    linguisticTermId: 5,
-    criteria: 6,
-    alternative: 5,
-    expertId: 2,
-  },
-  "e2-a5-c7": {
-    linguisticTermId: 3,
-    criteria: 7,
-    alternative: 5,
     expertId: 2,
   },
   "e3-a1-c1": {
-    linguisticTermId: 2,
+    linguisticTermId: 3,
     criteria: 1,
     alternative: 1,
     expertId: 3,
   },
   "e3-a1-c2": {
-    linguisticTermId: 3,
+    linguisticTermId: 2,
     criteria: 2,
     alternative: 1,
     expertId: 3,
   },
   "e3-a1-c3": {
-    linguisticTermId: 4,
+    linguisticTermId: 3,
     criteria: 3,
     alternative: 1,
     expertId: 3,
   },
   "e3-a1-c4": {
-    linguisticTermId: 4,
+    linguisticTermId: 2,
     criteria: 4,
     alternative: 1,
     expertId: 3,
@@ -970,20 +686,8 @@ export const expertsEstimations = {
     alternative: 1,
     expertId: 3,
   },
-  "e3-a1-c6": {
-    linguisticTermId: 2,
-    criteria: 6,
-    alternative: 1,
-    expertId: 3,
-  },
-  "e3-a1-c7": {
-    linguisticTermId: 2,
-    criteria: 7,
-    alternative: 1,
-    expertId: 3,
-  },
   "e3-a2-c1": {
-    linguisticTermId: 2,
+    linguisticTermId: 4,
     criteria: 1,
     alternative: 2,
     expertId: 3,
@@ -995,7 +699,7 @@ export const expertsEstimations = {
     expertId: 3,
   },
   "e3-a2-c3": {
-    linguisticTermId: 3,
+    linguisticTermId: 1,
     criteria: 3,
     alternative: 2,
     expertId: 3,
@@ -1007,37 +711,25 @@ export const expertsEstimations = {
     expertId: 3,
   },
   "e3-a2-c5": {
-    linguisticTermId: 4,
+    linguisticTermId: 0,
     criteria: 5,
     alternative: 2,
     expertId: 3,
   },
-  "e3-a2-c6": {
-    linguisticTermId: 2,
-    criteria: 6,
-    alternative: 2,
-    expertId: 3,
-  },
-  "e3-a2-c7": {
-    linguisticTermId: 1,
-    criteria: 7,
-    alternative: 2,
-    expertId: 3,
-  },
   "e3-a3-c1": {
-    linguisticTermId: 3,
+    linguisticTermId: 1,
     criteria: 1,
     alternative: 3,
     expertId: 3,
   },
   "e3-a3-c2": {
-    linguisticTermId: 1,
+    linguisticTermId: 4,
     criteria: 2,
     alternative: 3,
     expertId: 3,
   },
   "e3-a3-c3": {
-    linguisticTermId: 4,
+    linguisticTermId: 2,
     criteria: 3,
     alternative: 3,
     expertId: 3,
@@ -1049,106 +741,100 @@ export const expertsEstimations = {
     expertId: 3,
   },
   "e3-a3-c5": {
-    linguisticTermId: 2,
-    criteria: 5,
-    alternative: 3,
-    expertId: 3,
-  },
-  "e3-a3-c6": {
-    linguisticTermId: 2,
-    criteria: 6,
-    alternative: 3,
-    expertId: 3,
-  },
-  "e3-a3-c7": {
     linguisticTermId: 1,
-    criteria: 7,
+    criteria: 5,
     alternative: 3,
     expertId: 3,
   },
-  "e3-a4-c1": {
+  "e4-a1-c1": {
     linguisticTermId: 3,
     criteria: 1,
-    alternative: 4,
-    expertId: 3,
+    alternative: 1,
+    expertId: 4,
   },
-  "e3-a4-c2": {
+  "e4-a1-c2": {
     linguisticTermId: 2,
     criteria: 2,
-    alternative: 4,
-    expertId: 3,
+    alternative: 1,
+    expertId: 4,
   },
-  "e3-a4-c3": {
-    linguisticTermId: 3,
+  "e4-a1-c3": {
+    linguisticTermId: 1,
     criteria: 3,
-    alternative: 4,
-    expertId: 3,
+    alternative: 1,
+    expertId: 4,
   },
-  "e3-a4-c4": {
-    linguisticTermId: 2,
+  "e4-a1-c4": {
+    linguisticTermId: 3,
     criteria: 4,
-    alternative: 4,
-    expertId: 3,
+    alternative: 1,
+    expertId: 4,
   },
-  "e3-a4-c5": {
-    linguisticTermId: 4,
+  "e4-a1-c5": {
+    linguisticTermId: 2,
     criteria: 5,
-    alternative: 4,
-    expertId: 3,
+    alternative: 1,
+    expertId: 4,
   },
-  "e3-a4-c6": {
-    linguisticTermId: 3,
-    criteria: 6,
-    alternative: 4,
-    expertId: 3,
-  },
-  "e3-a4-c7": {
-    linguisticTermId: 3,
-    criteria: 7,
-    alternative: 4,
-    expertId: 3,
-  },
-  "e3-a5-c1": {
+  "e4-a2-c1": {
     linguisticTermId: 4,
     criteria: 1,
-    alternative: 5,
-    expertId: 3,
+    alternative: 2,
+    expertId: 4,
   },
-  "e3-a5-c2": {
-    linguisticTermId: 5,
+  "e4-a2-c2": {
+    linguisticTermId: 1,
     criteria: 2,
-    alternative: 5,
-    expertId: 3,
+    alternative: 2,
+    expertId: 4,
   },
-  "e3-a5-c3": {
+  "e4-a2-c3": {
     linguisticTermId: 3,
     criteria: 3,
-    alternative: 5,
-    expertId: 3,
+    alternative: 2,
+    expertId: 4,
   },
-  "e3-a5-c4": {
-    linguisticTermId: 3,
+  "e4-a2-c4": {
+    linguisticTermId: 0,
     criteria: 4,
-    alternative: 5,
-    expertId: 3,
+    alternative: 2,
+    expertId: 4,
   },
-  "e3-a5-c5": {
-    linguisticTermId: 3,
+  "e4-a2-c5": {
+    linguisticTermId: 2,
     criteria: 5,
-    alternative: 5,
-    expertId: 3,
+    alternative: 2,
+    expertId: 4,
   },
-  "e3-a5-c6": {
-    linguisticTermId: 4,
-    criteria: 6,
-    alternative: 5,
-    expertId: 3,
+  "e4-a3-c1": {
+    linguisticTermId: 3,
+    criteria: 1,
+    alternative: 3,
+    expertId: 4,
   },
-  "e3-a5-c7": {
+  "e4-a3-c2": {
+    linguisticTermId: 1,
+    criteria: 2,
+    alternative: 3,
+    expertId: 4,
+  },
+  "e4-a3-c3": {
     linguisticTermId: 4,
-    criteria: 7,
-    alternative: 5,
-    expertId: 3,
+    criteria: 3,
+    alternative: 3,
+    expertId: 4,
+  },
+  "e4-a3-c4": {
+    linguisticTermId: 2,
+    criteria: 4,
+    alternative: 3,
+    expertId: 4,
+  },
+  "e4-a3-c5": {
+    linguisticTermId: 0,
+    criteria: 5,
+    alternative: 3,
+    expertId: 4,
   },
 };
 
