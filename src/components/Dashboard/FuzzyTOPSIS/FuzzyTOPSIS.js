@@ -4,12 +4,16 @@ import GroupedEstimations from "./GroupedEstimations";
 import AveragedEstimations from "./AveragedEstimations";
 import NormalizedEstimations from "./NormalizedEstimations";
 import WeightedNormalizedEstimations from "./WeightedNormalizedEstimations";
+import IdealSolutions from "./IdealSolutions";
+import IdealSolutionsDistance from "./IdealSolutionsDistance";
 
 import {
   getAveragedEstimations,
   groupEstimations,
   getNormalizedEstimations,
   getWeightedNormalizedEstimations,
+  getIdealSolutions,
+  getIdealSolutionsDistance,
 } from "../../../utils/fuzzyTOPSISUtils";
 
 export default function FuzzyTOPSIS() {
@@ -66,6 +70,15 @@ export default function FuzzyTOPSIS() {
       criteriaAveragedEstimations
     );
 
+  const alternativesIdealSolutions = getIdealSolutions(
+    alternativesWeightedNormalizedEstimations
+  );
+
+  const alternativesIdealSolutionsDistance = getIdealSolutionsDistance(
+    alternativesIdealSolutions,
+    alternativesWeightedNormalizedEstimations
+  );
+
   return (
     <>
       <GroupedEstimations
@@ -90,6 +103,14 @@ export default function FuzzyTOPSIS() {
         alternativesWeightedNormalizedEstimations={
           alternativesWeightedNormalizedEstimations
         }
+        names={names}
+      />
+      <IdealSolutions
+        alternativesIdealSolutions={alternativesIdealSolutions}
+        names={names}
+      />
+      <IdealSolutionsDistance
+        alternativesIdealSolutionsDistance={alternativesIdealSolutionsDistance}
         names={names}
       />
     </>

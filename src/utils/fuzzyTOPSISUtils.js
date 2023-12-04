@@ -144,3 +144,83 @@ export function getWeightedNormalizedEstimations(
 
   return ungroupByCriteria(weightedNormalizedEstimations);
 }
+
+export function getIdealSolutions(weightedNormalizedEstimations) {
+  const groupedWeightedNormalizedEstimations = groupByCriteria(
+    weightedNormalizedEstimations
+  );
+
+  const idealSolutions = {
+    positive: {},
+    negative: {},
+  };
+
+  for (const key in groupedWeightedNormalizedEstimations) {
+    const alternativesLinguisticTerms =
+      groupedWeightedNormalizedEstimations[key];
+    idealSolutions.positive[key] = [
+      maxFuzzyNumbers(alternativesLinguisticTerms),
+      maxFuzzyNumbers(alternativesLinguisticTerms),
+      maxFuzzyNumbers(alternativesLinguisticTerms),
+    ];
+    idealSolutions.negative[key] = [
+      minFuzzyNumbers(alternativesLinguisticTerms),
+      minFuzzyNumbers(alternativesLinguisticTerms),
+      minFuzzyNumbers(alternativesLinguisticTerms),
+    ];
+  }
+
+  return idealSolutions;
+}
+
+export function getIdealSolutionsDistance(
+  idealSolutions,
+  weightedNormalizedEstimations
+) {
+  const idealSolutionsDistance = {
+    positive: {},
+    negative: {},
+  };
+
+  const groupedWeightedNormalizedEstimations = groupByCriteria(
+    weightedNormalizedEstimations
+  );
+  console.log(groupedWeightedNormalizedEstimations);
+  for (const key in groupedWeightedNormalizedEstimations) {
+    const alternativesLinguisticTerms =
+      groupedWeightedNormalizedEstimations[key];
+    const positiveIdealSolution = idealSolutions.positive[key];
+    const negativeIdealSolution = idealSolutions.negative[key];
+
+    idealSolutionsDistance.positive[key] = distance(
+      positiveIdealSolution,
+      alternativesLinguisticTerms
+    );
+    idealSolutionsDistance.negative[key] = distance(
+      negativeIdealSolution,
+      alternativesLinguisticTerms
+    );
+  }
+  console.log(idealSolutionsDistance);
+  return idealSolutionsDistance;
+}
+
+export function distance(idealSolution, alternativesLinguisticTerms) {
+  const difference = alternativesLinguisticTerms.map((linguisticTerm, index) =>
+    linguisticTerm.map(
+      (fuzzyNumber, fuzzyNumberIndex) =>
+        fuzzyNumber - idealSolution[fuzzyNumberIndex]
+    )
+  );
+  const squaredDifference = difference.map((linguisticTerm) =>
+    linguisticTerm.map((fuzzyNumber) => fuzzyNumber ** 2)
+  );
+  const sumSquaredDifference = squaredDifference.map((linguisticTerm) =>
+    linguisticTerm.reduce((a, b) => a + b, 0)
+  );
+  const distance = sumSquaredDifference.map((squaredDifference) =>
+    Math.sqrt(squaredDifference * (1 / 3))
+  );
+
+  return distance;
+}
