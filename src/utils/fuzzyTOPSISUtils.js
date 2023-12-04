@@ -54,6 +54,16 @@ function sumFuzzyNumbers(sumArray) {
   return [sumLeftElements, sumMiddleElements, sumRightElements];
 }
 
+function multiplyFuzzyNumbersByWeight(firstArray, secondArray) {
+  const multypliedFuzzyNumbers = firstArray.map((subarray, index) => [
+    subarray[0] * secondArray[0],
+    subarray[1] * secondArray[1],
+    subarray[2] * secondArray[2],
+  ]);
+
+  return multypliedFuzzyNumbers;
+}
+
 function minFuzzyNumbers(minArray) {
   const leftElements = minArray.map((subarray) => subarray[0]);
   const minElement = Math.min(...leftElements);
@@ -100,19 +110,37 @@ const ungroupByCriteria = (groupedData) => {
 
 export function getNormalizedEstimations(averagedEstimations, optimization) {
   const normalizedEstimations = {};
-
   const groupedAveragedEstimations = groupByCriteria(averagedEstimations);
-
   for (const key in groupedAveragedEstimations) {
     const linguisticTerms = groupedAveragedEstimations[key];
-    const maxNumber = maxFuzzyNumbers(linguisticTerms);
-
-    const normalizedFuzzyNumbers = linguisticTerms.map((fuzzyNumbers) => {
-      return fuzzyNumbers.map((fuzzyNumber) => fuzzyNumber / maxNumber);
-    });
-
+    const optimizationNumber =
+      optimization[key] === "Max"
+        ? maxFuzzyNumbers(linguisticTerms)
+        : minFuzzyNumbers(linguisticTerms);
+    const normalizedFuzzyNumbers = linguisticTerms.map((fuzzyNumbers) =>
+      fuzzyNumbers.map((fuzzyNumber) => fuzzyNumber / optimizationNumber)
+    );
     normalizedEstimations[key] = normalizedFuzzyNumbers;
   }
-
   return ungroupByCriteria(normalizedEstimations);
+}
+
+export function getWeightedNormalizedEstimations(
+  alternativesNormalizedEstimations,
+  criteriaAveragedEstimations
+) {
+  const groupedNormalizedEstimations = groupByCriteria(
+    alternativesNormalizedEstimations
+  );
+  const weightedNormalizedEstimations = {};
+  for (const key in groupedNormalizedEstimations) {
+    const alternativesLinguisticTerms = groupedNormalizedEstimations[key];
+    const criteriaLinguisticTerms = criteriaAveragedEstimations[key];
+    weightedNormalizedEstimations[key] = multiplyFuzzyNumbersByWeight(
+      alternativesLinguisticTerms,
+      criteriaLinguisticTerms
+    );
+  }
+
+  return ungroupByCriteria(weightedNormalizedEstimations);
 }

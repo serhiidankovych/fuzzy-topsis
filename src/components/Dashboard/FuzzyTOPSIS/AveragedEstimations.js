@@ -12,11 +12,12 @@ import {
   IconButton,
 } from "@mui/material";
 import { IoRepeatSharp } from "react-icons/io5";
-
+import { IoTrendingDown, IoTrendingUp } from "react-icons/io5";
 export default function AveragedEstimations({
   names,
   criteriaAveragedEstimations,
   alternativesAveragedEstimations,
+  optimization,
 }) {
   const [transposed, setTransposed] = useState(false);
   const toggleTransposition = () => {
@@ -44,6 +45,24 @@ export default function AveragedEstimations({
               {criteriaAveragedEstimations[itemId]
                 ?.map((number) => number.toFixed(2))
                 .join(", ")}
+            </div>
+          </TableCell>
+          <TableCell align="center">
+            <div
+              style={{
+                textAlign: "center",
+                padding: "5px",
+                border: "1px solid #51454f",
+                backgroundColor: "#232222",
+                margin: "3px",
+                borderRadius: "5px",
+              }}
+            >
+              {optimization[itemId] === "Max" ? (
+                <IoTrendingUp />
+              ) : (
+                <IoTrendingDown />
+              )}
             </div>
           </TableCell>
         </TableRow>
@@ -192,8 +211,8 @@ export default function AveragedEstimations({
             <TableHead>
               <TableRow>
                 <TableCell align="center">Criteria</TableCell>
-
                 <TableCell align="center">Weigth</TableCell>
+                <TableCell align="center">Optimization</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>{CriteriaAveragedEstimations}</TableBody>
