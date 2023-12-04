@@ -3,9 +3,9 @@ import Start from "./Start/Start";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Setup from "./Setup/Setup";
-
-import { ToastContainer, toast } from "react-toastify";
 import ExpertsEstimations from "./ExpertsEstimations/ExpertsEstimations";
+import FuzzyTOPSIS from "./FuzzyTOPSIS/FuzzyTOPSIS";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Dashboard() {
   const [isSetupOpen, setIsSetupOpen] = React.useState(false);
@@ -42,7 +42,7 @@ export default function Dashboard() {
         />
       )}
 
-      {/* {isExpertsEstimationsSet && <FuzzyTOPSIS />} */}
+      {isExpertsEstimationsSet && <FuzzyTOPSIS />}
 
       <Setup
         isDatasetNotUsed={isDatasetNotUsed}

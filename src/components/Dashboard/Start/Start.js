@@ -25,13 +25,13 @@ function Start({ handleDisplaySetup }) {
             height: "100vh",
             flexWrap: "wrap",
             marginTop: matches ? "50px" : "0px",
+            justifyContent: "space-around",
           }}
         >
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
               width: "500px",
               alignItems: "flex-start",
               justifyContent: " center",
