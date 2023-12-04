@@ -53,3 +53,66 @@ function sumFuzzyNumbers(sumArray) {
 
   return [sumLeftElements, sumMiddleElements, sumRightElements];
 }
+
+function minFuzzyNumbers(minArray) {
+  const leftElements = minArray.map((subarray) => subarray[0]);
+  const minElement = Math.min(...leftElements);
+  return minElement;
+}
+function maxFuzzyNumbers(maxArray) {
+  const rightElements = maxArray.map((subarray) => subarray[2]);
+  const maxElement = Math.max(...rightElements);
+  return maxElement;
+}
+
+const groupByCriteria = (estimations) => {
+  const groupCriteria = {};
+  for (const key in estimations) {
+    const item = estimations[key];
+    const [, aggregationKey] = key.split("-");
+    if (!groupCriteria[aggregationKey]) {
+      groupCriteria[aggregationKey] = [];
+    }
+    groupCriteria[aggregationKey].push(item);
+  }
+  return groupCriteria;
+};
+const ungroupByCriteria = (groupedData) => {
+  const ungroupedData = {};
+
+  for (const key in groupedData) {
+    const group = groupedData[key];
+
+    for (let i = 0; i < group.length; i++) {
+      const alternativeKey = `a${i + 1}`;
+      const combinedKey = `${alternativeKey}-${key}`;
+
+      if (!ungroupedData[combinedKey]) {
+        ungroupedData[combinedKey] = [];
+      }
+
+      ungroupedData[combinedKey] = group[i];
+    }
+  }
+
+  return ungroupedData;
+};
+
+export function getNormalizedEstimations(averagedEstimations, optimization) {
+  const normalizedEstimations = {};
+
+  const groupedAveragedEstimations = groupByCriteria(averagedEstimations);
+
+  for (const key in groupedAveragedEstimations) {
+    const linguisticTerms = groupedAveragedEstimations[key];
+    const maxNumber = maxFuzzyNumbers(linguisticTerms);
+
+    const normalizedFuzzyNumbers = linguisticTerms.map((fuzzyNumbers) => {
+      return fuzzyNumbers.map((fuzzyNumber) => fuzzyNumber / maxNumber);
+    });
+
+    normalizedEstimations[key] = normalizedFuzzyNumbers;
+  }
+
+  return ungroupByCriteria(normalizedEstimations);
+}

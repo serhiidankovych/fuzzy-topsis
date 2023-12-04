@@ -2,10 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import GroupedEstimations from "./GroupedEstimations";
 import AveragedEstimations from "./AveragedEstimations";
+import NormalizedEstimations from "./NormalizedEstimations";
 
 import {
   getAveragedEstimations,
   groupEstimations,
+  getNormalizedEstimations,
 } from "../../../utils/fuzzyTOPSISUtils";
 
 export default function FuzzyTOPSIS() {
@@ -45,15 +47,16 @@ export default function FuzzyTOPSIS() {
     numbers.numberOfExperts
   );
 
-  console.log(criteriaAveragedEstimations);
-
   const alternativesAveragedEstimations = getAveragedEstimations(
     groupedAlternativesEstimations,
     alternativesLinguisticTerms.alternativeLinguisticTerms,
     numbers.numberOfExperts
   );
 
-  console.log(alternativesAveragedEstimations);
+  const alternativesNormalizedEstimations = getNormalizedEstimations(
+    alternativesAveragedEstimations,
+    optimization.optimization
+  );
 
   return (
     <>
@@ -68,6 +71,10 @@ export default function FuzzyTOPSIS() {
       <AveragedEstimations
         alternativesAveragedEstimations={alternativesAveragedEstimations}
         criteriaAveragedEstimations={criteriaAveragedEstimations}
+        names={names}
+      />
+      <NormalizedEstimations
+        alternativesNormalizedEstimations={alternativesNormalizedEstimations}
         names={names}
       />
     </>
