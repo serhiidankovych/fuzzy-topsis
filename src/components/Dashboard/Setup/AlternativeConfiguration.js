@@ -186,7 +186,7 @@ export default function AlternativeConfiguration({ handleSetupStep }) {
           </ScatterChart>
         </ResponsiveContainer>
       </Box>
-      <Typography>~Linguistic terms:</Typography>
+      <Typography>~Linguistic terms(1-9):</Typography>
       <Box
         component="span"
         sx={{
@@ -201,7 +201,7 @@ export default function AlternativeConfiguration({ handleSetupStep }) {
         <ResponsiveContainer width="80%" height={150}>
           <ScatterChart>
             <CartesianGrid />
-            <XAxis type="number" dataKey="x" />
+            <XAxis type="number" dataKey="x" domain={[0, 9]} />
             <YAxis type="number" dataKey="y" />
             <ZAxis type="number" range={[100]} />
             <Tooltip cursor={{ strokeDasharray: "3 3" }} />
