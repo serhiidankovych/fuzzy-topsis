@@ -185,7 +185,7 @@ export function getIdealSolutionsDistance(
   const groupedWeightedNormalizedEstimations = groupByCriteria(
     weightedNormalizedEstimations
   );
-  console.log(groupedWeightedNormalizedEstimations);
+
   for (const key in groupedWeightedNormalizedEstimations) {
     const alternativesLinguisticTerms =
       groupedWeightedNormalizedEstimations[key];
@@ -201,7 +201,7 @@ export function getIdealSolutionsDistance(
       alternativesLinguisticTerms
     );
   }
-  console.log(idealSolutionsDistance);
+
   return idealSolutionsDistance;
 }
 
@@ -224,3 +224,61 @@ export function distance(idealSolution, alternativesLinguisticTerms) {
 
   return distance;
 }
+
+export function getClosenessCoefficient(idealSolutionsDistance) {
+  const groupedIdealPositiveSolutionsDistance = groupByCriteria(
+    idealSolutionsDistance.positive
+  );
+  const groupedIdealNegativeSolutionsDistance = groupByCriteria(
+    idealSolutionsDistance.negative
+  );
+  const alternativesClosenessCoefficient = {};
+
+  const sumIdealSolutionsDistanceValues = {
+    positive: {},
+    negative: {},
+  };
+
+  for (const key in groupedIdealPositiveSolutionsDistance) {
+    const idealPositiveSolutionsDistanceValues =
+      groupedIdealPositiveSolutionsDistance[key];
+    sumIdealSolutionsDistanceValues.positive = sumFuzzyNumbers(
+      idealPositiveSolutionsDistanceValues
+    );
+    const idealNegativeSolutionsDistanceValues =
+      groupedIdealNegativeSolutionsDistance[key];
+    sumIdealSolutionsDistanceValues.negative = sumFuzzyNumbers(
+      idealNegativeSolutionsDistanceValues
+    );
+  }
+
+  for (const key in sumIdealSolutionsDistanceValues.positive) {
+    alternativesClosenessCoefficient[key] =
+      sumIdealSolutionsDistanceValues.negative[key] /
+      (sumIdealSolutionsDistanceValues.positive[key] +
+        sumIdealSolutionsDistanceValues.negative[key]);
+  }
+
+  return alternativesClosenessCoefficient;
+}
+
+export function getRankAlternatives(alternativesClosenessCoefficient) {
+  const rankedAlternativessClosenessCoefficient = Object.entries(
+    alternativesClosenessCoefficient
+  );
+  rankedAlternativessClosenessCoefficient.sort((a, b) => b[1] - a[1]);
+
+  return addComparisonSymbols(rankedAlternativessClosenessCoefficient);
+}
+
+const addComparisonSymbols = (rankedValues) => {
+  for (let i = 0; i < rankedValues.length - 1; i++) {
+    const currentRank = rankedValues[i][1];
+    const nextRank = rankedValues[i + 1][1];
+
+    rankedValues[i].push(currentRank === nextRank ? "=" : ">");
+  }
+
+  rankedValues[rankedValues.length - 1].push(" ");
+  return rankedValues;
+};

@@ -6,6 +6,7 @@ import NormalizedEstimations from "./NormalizedEstimations";
 import WeightedNormalizedEstimations from "./WeightedNormalizedEstimations";
 import IdealSolutions from "./IdealSolutions";
 import IdealSolutionsDistance from "./IdealSolutionsDistance";
+import RankedAlternatives from "./RankedAlternatives";
 
 import {
   getAveragedEstimations,
@@ -14,6 +15,8 @@ import {
   getWeightedNormalizedEstimations,
   getIdealSolutions,
   getIdealSolutionsDistance,
+  getClosenessCoefficient,
+  getRankAlternatives,
 } from "../../../utils/fuzzyTOPSISUtils";
 
 export default function FuzzyTOPSIS() {
@@ -79,6 +82,14 @@ export default function FuzzyTOPSIS() {
     alternativesWeightedNormalizedEstimations
   );
 
+  const alternativesClosenessCoefficient = getClosenessCoefficient(
+    alternativesIdealSolutionsDistance
+  );
+
+  const rankedAlternatives = getRankAlternatives(
+    alternativesClosenessCoefficient
+  );
+
   return (
     <>
       <GroupedEstimations
@@ -111,6 +122,10 @@ export default function FuzzyTOPSIS() {
       />
       <IdealSolutionsDistance
         alternativesIdealSolutionsDistance={alternativesIdealSolutionsDistance}
+        names={names}
+      />
+      <RankedAlternatives
+        rankedAlternatives={rankedAlternatives}
         names={names}
       />
     </>
