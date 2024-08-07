@@ -224,7 +224,7 @@ export default function NumberConfiguration({
             step={1}
             marks
             min={3}
-            max={10}
+            max={20}
             onChange={(e) => setNumberOfCriteria(e.target.value)}
             color="green"
             disabled={!isDatasetNotUsed}
